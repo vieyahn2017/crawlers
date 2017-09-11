@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<ul>
+{% for item in articles %}
+<li>
+<div class="ztitle">'标题',{{ item.title }} </div>
+<div>'浏览量' {{ item.brows }} </div>
+<div>'发布时间' {{ item.newstime}} </div>
+<div>'网页地址' {{ item.url }} </div>
+<div>'标签':
+{% for item_l in item.label  %}
+ <span>{{ item_l  }} </span>
+{% endfor %}
+ </div>
+<div>'摘要' {{ item.abstract}} </div>
+<div class="zimage">'图片网址'<img  src={{ item.image }} class="img200"> </div>
+<div>'图片路径' {{ item.image_file}} </div>
+<p>
+</li>
+{% endfor %}
+</ul>
+</body>
+</html>

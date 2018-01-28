@@ -1,0 +1,1 @@
+xcrawler-master[crawler with gevent, requests, leveldb]

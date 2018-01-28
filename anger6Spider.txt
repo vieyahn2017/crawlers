@@ -1,0 +1,4 @@
+happyAnger6/anger6Spider
+happyAnger6/OpenSpider
+python实现的网络爬虫 基于tornado,redis,mongodb实现 利用协程和tornado异步库高效地爬取页面
+他的博客有很多python的文章http://blog.csdn.net/happyAnger6/article/category/6085726

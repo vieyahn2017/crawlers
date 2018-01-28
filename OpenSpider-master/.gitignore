@@ -1,0 +1,4 @@
+*.pyc
+node1.log node2.log node3.log node4.log node5.log
+*.log
+.idea

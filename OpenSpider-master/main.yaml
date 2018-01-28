@@ -1,0 +1,6 @@
+global: {concurrency: 10,
+  concurrent_manager: OpenSpider.concurrents.coroutine.conruntinemanager.CoruntineManager}
+engine: {name: OpenSpider.workflow.engine.WorkflowEngine,
+  workflow: httpworkflow.yaml}
+
+

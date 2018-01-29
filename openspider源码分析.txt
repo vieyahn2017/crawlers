@@ -1,0 +1,52 @@
+openspider源码分析————综述
+18 九 2016 zhangxa 268 次 0
+
+openspider是我的一个开源项目，目的是实现一个支持分布式并且易于扩展的爬虫框架。
+
+主要有以下特点：
+
+基于yaml配置文件
+基于组件的工作流。可以自已定义组件，并通过yaml配置文件配置工作流程
+通过redis存储url,分布式通过celery实现
+并发模型支持线程，进程，协程3种方式，默认采用tornado协程方式。
+通过phantomjs实现对复杂js页面的加载
+这是目前想到的几个特点，现着重实现这几个功能，希望有更多的人试用并反馈，不断完善不断进步。
+
+ 
+
+代码目录结构：
+
+├── cfg        -----------------------配置文件目录
+│   └── httpworkflow ------------------- http工作流配置文件目录，存放http工作流程图配置文件
+├── concurrents -------------------并发管理模块
+│   ├── coroutine --------------协程并发模块
+│
+│
+├── configparser ------------配置文件解析模块
+│
+├── dispatcher ---------
+├── env -------------- 运行上下文模块
+├── phantomjs ------ phantomjs模块
+├── request ------------请求管理模块，对于爬虫来说，用来不断的产生url请求
+│
+├── resource -----------资源管理模块，用于动态的加载工作流中配置的组件
+│
+├── spidercelery ------ celery模块，用于实现celery的任务
+│
+├── spiderQueue ------爬虫队列管理模块，目前基于redis实现url队列
+│
+├── tests -----------------单元测试模块
+│   ├── cfg_components_tests
+│   ├── request_tests
+│   ├── resource_tests
+│   ├── selinum_tests
+│   └── workflow_tests
+├── tries ------------ 一些第三方模块的测试代码
+│   └── celery_tries
+│
+└── workflow --------工作流模块，实现工作流程中各个组件的执行和处理
+├── httpcomponents ----------- http组件模块，有关http处理的组件
+│
+└
+
+Categories:OpenSpider源码分析

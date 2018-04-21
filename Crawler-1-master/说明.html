@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+前言
+标题有点唬人，以前了解过研究gevent，twisted，scrapy（基于twisted）。最近有个想法：这些东西比如做爬虫，谁的效率更好呢？ 我就写了以下程序（附件）测试然后用timeit（跑3次，每次10遍，时间有限）看效果
+
+原理：
+为了防止远程网络的问题，从一个网站爬下网页代码（html），页面下载本地放在了我的本机（gentoo+apache）
+然后爬虫去分析这些页面上面的链接（开始是主页），再挖掘其他页面，抓取页面关键字（我这里就是个‘py’） 程序打包Crawler.tar.bz2
+先看代码树：
+
+dongwm@localhost ~ $ tree Crawler/
+Crawler/
+├── common_Crawler.py  #标准爬虫，里面只是多线程编程，抓取分析类在common.py
+├── common.py  #共用函数，里面只是抓取页面分析页面关键字
+├── common.pyc #你懂得
+├── Crawler #scrapy和django框架差不多的用法
+│   ├── __init__.py
+│   ├── __init__.pyc
+│   ├── items.py #不需要利用，默认
+│   ├── pipelines.py
+│   ├── settings.py
+│   ├── settings.pyc
+│   └── spiders #抓取脚本文件夹
+│       ├── __init__.py
+│       ├── __init__.pyc
+│       ├── spiders.py #我做的分析页面，这个和多线程/gevent调用的抓取分析类不同，我使用了内置方法（大家可以修改共用函数改成scrapy的方式，这样三种效果就更准确了）
+│       └── spiders.pyc
+├── gevent_Crawler.py #gevent版本爬虫，效果和标准版一样，抓取分析类也是common.py 保证其他环节相同，只是一个多线程，一个用协程
+├── scrapy.cfg
+└── scrapy_Crawler.py #因为scrapy使用是命令行，我用subproess封装了命令，然后使用timeit计算效果
+
+2 directories, 16 files
+</body>
+</html>

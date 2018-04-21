@@ -1,0 +1,10 @@
+syntax: glob
+
+.git*
+*.py[co]
+*.autosave
+*~
+*.swp
+.DS_Store
+build
+dist
